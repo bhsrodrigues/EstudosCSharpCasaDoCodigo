@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TrocaDeValores));
             this.valor1 = new System.Windows.Forms.Label();
             this.txtValue1 = new System.Windows.Forms.TextBox();
             this.lblValor2 = new System.Windows.Forms.Label();
@@ -69,12 +70,13 @@
             // 
             // btnTrocar
             // 
-            this.btnTrocar.Image = global::TrocaDeValores.Properties.Resources._124069_200;
-            this.btnTrocar.Location = new System.Drawing.Point(85, 46);
+            this.btnTrocar.Image = ((System.Drawing.Image)(resources.GetObject("btnTrocar.Image")));
+            this.btnTrocar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTrocar.Location = new System.Drawing.Point(91, 38);
             this.btnTrocar.Name = "btnTrocar";
-            this.btnTrocar.Size = new System.Drawing.Size(75, 23);
+            this.btnTrocar.Size = new System.Drawing.Size(84, 31);
             this.btnTrocar.TabIndex = 4;
-            this.btnTrocar.Text = "Trocar";
+            this.btnTrocar.Text = "   Trocar";
             this.btnTrocar.UseVisualStyleBackColor = true;
             this.btnTrocar.Click += new System.EventHandler(this.btnTrocar_Click);
             // 

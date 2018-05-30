@@ -22,6 +22,8 @@ namespace TrocaDeValores
             String value = txtValue1.Text;
             txtValue1.Text = txtValue2.Text;
             txtValue2.Text = value;
+            MessageBox.Show("Alteração de valores realizada com sucesso.", "Sucesso", MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
         }
     }
 }
