@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CasaDoCodigoCapitulo1.Properties
+namespace Idade.Properties
 {
 
 
