@@ -88,6 +88,7 @@
             this.txtUltimoAniversario.Name = "txtUltimoAniversario";
             this.txtUltimoAniversario.Size = new System.Drawing.Size(103, 20);
             this.txtUltimoAniversario.TabIndex = 5;
+            this.txtUltimoAniversario.Leave += new System.EventHandler(this.txtUltimoAniversario_Leave);
             // 
             // lblDataAtual
             // 

@@ -83,6 +83,48 @@ namespace Idade
 
             lblDataAtual.Text = getActualDate();
         }
+
+        public bool validateDate(int lastBirthDate)
+        {
+
+            DateTime probablyDate = new DateTime(lastBirthDate, DateTime.Now.Month, DateTime.Now.Day);
+            TimeSpan daysDifference = Convert.ToDateTime(probablyDate.ToShortDateString()) - Convert.ToDateTime(dtpNascimento.Value.ToShortDateString());
+
+            if (DateTime.Now.Year %4 == 0)
+            {
+                return isLeapYear(daysDifference.TotalDays, 366);
+            }
+            else
+            {
+                return isLeapYear(daysDifference.TotalDays, 365);
+            }
+
+        }
+
+        public bool isLeapYear(double totalDays, int daysYear)
+        {
+            if (totalDays >= daysYear)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        private void txtUltimoAniversario_Leave(object sender, EventArgs e)
+        {
+            string mensagem = "Favor preencher o ano do último aniversário com \n\n";
+            mensagem += "- Quatro dígitos;\n";
+            mensagem += "- Último aniversário menor ao ano atual e maior em relação ao ano de nascimento.";
+            if (txtUltimoAniversario.Text.Length < 4 ||
+                Convert.ToInt16(txtUltimoAniversario.Text) > DateTime.Now.Year ||
+                //Convert.ToInt16(txtUltimoAniversario.Text) == dtpNascimento.Value.Year ||
+                Convert.ToInt16(txtUltimoAniversario.Text) < dtpNascimento.Value.Year ||
+                !validateDate(Convert.ToInt16(txtUltimoAniversario.Text)))
+            {
+                MessageBox.Show(mensagem, "Data inválida", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtUltimoAniversario.Clear();
+            }
+        }
     }
 
     
