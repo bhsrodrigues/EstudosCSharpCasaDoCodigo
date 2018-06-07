@@ -112,6 +112,23 @@ namespace Idade
 
         private void txtUltimoAniversario_Leave(object sender, EventArgs e)
         {
+            /*string mensagem = "Favor preencher o ano do último aniversário com \n\n";
+            mensagem += "- Quatro dígitos;\n";
+            mensagem += "- Último aniversário menor ao ano atual e maior em relação ao ano de nascimento.";
+            if (txtUltimoAniversario.Text.Length < 4 ||
+                Convert.ToInt16(txtUltimoAniversario.Text) > DateTime.Now.Year ||
+                //Convert.ToInt16(txtUltimoAniversario.Text) == dtpNascimento.Value.Year ||
+                Convert.ToInt16(txtUltimoAniversario.Text) < dtpNascimento.Value.Year ||
+                !validateDate(Convert.ToInt16(txtUltimoAniversario.Text)))
+            {
+                MessageBox.Show(mensagem, "Data inválida", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtUltimoAniversario.Clear();
+            }*/
+        }
+
+        private void txtUltimoAniversario_Validating(object sender, CancelEventArgs e)
+        {
+            
             string mensagem = "Favor preencher o ano do último aniversário com \n\n";
             mensagem += "- Quatro dígitos;\n";
             mensagem += "- Último aniversário menor ao ano atual e maior em relação ao ano de nascimento.";
@@ -123,7 +140,42 @@ namespace Idade
             {
                 MessageBox.Show(mensagem, "Data inválida", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtUltimoAniversario.Clear();
+                //e.Cancel = true;
             }
+        }
+
+        private void btnIdentificar_Click(object sender, EventArgs e)
+        {
+            int idade = Convert.ToInt16(txtUltimoAniversario.Text) - dtpNascimento.Value.Year;
+            if (idade < 5)
+            {
+                txtCategoria.BackColor = Color.Red;
+                txtCategoria.Text = "Cliente não tem idade para nadar";
+            }else if(idade <= 7)
+            {
+                preencherCategoria("Infantil A");
+            }else if(idade <=10)
+            {
+                preencherCategoria("Infantil B");
+            }
+            else if (idade <= 13)
+            {
+                preencherCategoria("Juvenil A");
+            }
+            else if (idade <= 17)
+            {
+                preencherCategoria("Juvenil B");
+            }
+            else
+            {
+                preencherCategoria("Adulto");
+            }
+        }
+
+        public void preencherCategoria(string categoria)
+        {
+            txtCategoria.BackColor = Color.Yellow;
+            txtCategoria.Text = categoria;
         }
     }
 
