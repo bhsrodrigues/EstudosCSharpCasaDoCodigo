@@ -41,6 +41,8 @@ namespace Calculo
                 imc = (72.7 * heigth) - 58;
             }
             lblIMC.Text = String.Format("{0:n2}", imc);
+            lblIMC.ForeColor = Color.Red;
+
             lblIMC.Visible = true;
         }
 

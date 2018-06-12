@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.grpboxGender = new System.Windows.Forms.GroupBox();
-            this.rdbFemale = new System.Windows.Forms.RadioButton();
             this.rdoMale = new System.Windows.Forms.RadioButton();
+            this.rdbFemale = new System.Windows.Forms.RadioButton();
             this.lblHeight = new System.Windows.Forms.Label();
             this.txtHeight = new System.Windows.Forms.TextBox();
             this.lblIMC = new System.Windows.Forms.Label();
@@ -48,18 +48,6 @@
             this.grpboxGender.TabStop = false;
             this.grpboxGender.Text = "Sexo";
             // 
-            // rdbFemale
-            // 
-            this.rdbFemale.AutoSize = true;
-            this.rdbFemale.Location = new System.Drawing.Point(6, 14);
-            this.rdbFemale.Name = "rdbFemale";
-            this.rdbFemale.Size = new System.Drawing.Size(67, 17);
-            this.rdbFemale.TabIndex = 0;
-            this.rdbFemale.TabStop = true;
-            this.rdbFemale.Text = "&Feminino";
-            this.rdbFemale.UseVisualStyleBackColor = true;
-            this.rdbFemale.CheckedChanged += new System.EventHandler(this.rdbFemale_CheckedChanged);
-            // 
             // rdoMale
             // 
             this.rdoMale.AutoSize = true;
@@ -71,6 +59,18 @@
             this.rdoMale.Text = "&Masculino";
             this.rdoMale.UseVisualStyleBackColor = true;
             this.rdoMale.CheckedChanged += new System.EventHandler(this.rdbFemale_CheckedChanged);
+            // 
+            // rdbFemale
+            // 
+            this.rdbFemale.AutoSize = true;
+            this.rdbFemale.Location = new System.Drawing.Point(6, 14);
+            this.rdbFemale.Name = "rdbFemale";
+            this.rdbFemale.Size = new System.Drawing.Size(67, 17);
+            this.rdbFemale.TabIndex = 0;
+            this.rdbFemale.TabStop = true;
+            this.rdbFemale.Text = "&Feminino";
+            this.rdbFemale.UseVisualStyleBackColor = true;
+            this.rdbFemale.CheckedChanged += new System.EventHandler(this.rdbFemale_CheckedChanged);
             // 
             // lblHeight
             // 
@@ -92,11 +92,12 @@
             // lblIMC
             // 
             this.lblIMC.AutoSize = true;
-            this.lblIMC.Location = new System.Drawing.Point(112, 96);
+            this.lblIMC.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIMC.Location = new System.Drawing.Point(87, 79);
             this.lblIMC.Name = "lblIMC";
-            this.lblIMC.Size = new System.Drawing.Size(35, 13);
+            this.lblIMC.Size = new System.Drawing.Size(107, 39);
             this.lblIMC.TabIndex = 3;
-            this.lblIMC.Text = "label1";
+            this.lblIMC.Text = "00,00";
             this.lblIMC.Visible = false;
             // 
             // frmIMC
