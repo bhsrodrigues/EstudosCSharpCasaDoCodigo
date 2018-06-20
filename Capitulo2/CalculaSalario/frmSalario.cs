@@ -31,10 +31,60 @@ namespace CalculaSalario
                 return;
             }
 
+            getPayment(selectedRadioButtonCategoria, selectedRadioButtonTurno, 700, 100);
             updateStatus(0);
         }
 
-        private double getCoefficient(RadioButton rdoShift, double payment)
+        public double getFoodTickets(RadioButton rdoCategory, double minimunPayment, double payment)
+        {
+            //double foodTicket = 0;
+            if (rdoCategory.Text.Trim().Equals("Calouro") && payment < minimunPayment / 2)
+            {
+                return payment / 3;
+            }else
+            {
+                return payment / 6;
+            }
+        }
+
+        public void getPayment(RadioButton rdoCategory, RadioButton rdoShift, 
+            double minimumPayment, int hours)
+        {
+            double payment = hours * getCoefficient(rdoShift, hours);
+            double tax = 0;
+            switch (rdoCategory.Text.Trim())
+            {
+                case "Calouro":
+                    if (payment < 300)
+                    {
+                        tax = payment * 0.01;
+                    }
+                    else
+                    {
+                        tax = payment * 0.02;
+                    }
+                    break;
+                case "Veterano":
+                    if (payment < 400)
+                    {
+                        tax = payment * 0.03;
+                    }
+                    else
+                    {
+                        tax = payment * 0.04;
+                    }
+                    break;
+            
+            }
+            updateSalary(getCoefficient(rdoShift, hours));
+        }
+
+        public void updateSalary(double coefficient)
+        {
+            lstboxResult.Items.Add("Valor do coeficiente......" + coefficient.ToString());
+        }
+
+        private double getCoefficient(RadioButton rdoShift, double minumunPayment)
         {
 
             double coefficient = 0;
@@ -42,13 +92,13 @@ namespace CalculaSalario
             switch (rdoShift.Text.Replace("&",""))
             {
                 case "Matutino":
-                    coefficient = payment * 0.01;
+                    coefficient = minumunPayment * 0.01;
                     break;
                 case "Vespertino":
-                    coefficient = payment * 0.02;
+                    coefficient = minumunPayment * 0.02;
                     break;
                 case "Noturno":
-                    coefficient = payment * 0.03;
+                    coefficient = minumunPayment * 0.03;
                     break;
             }
 

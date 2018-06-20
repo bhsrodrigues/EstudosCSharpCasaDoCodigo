@@ -38,7 +38,7 @@
             this.rdobtnVespertino = new System.Windows.Forms.RadioButton();
             this.rdobtnMatutino = new System.Windows.Forms.RadioButton();
             this.grpboxCategoria = new System.Windows.Forms.GroupBox();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioVeterano = new System.Windows.Forms.RadioButton();
             this.rdobtnCalouro = new System.Windows.Forms.RadioButton();
             this.btnCalcular = new System.Windows.Forms.Button();
             this.txtStatus = new System.Windows.Forms.TextBox();
@@ -128,7 +128,7 @@
             // 
             // grpboxCategoria
             // 
-            this.grpboxCategoria.Controls.Add(this.radioButton1);
+            this.grpboxCategoria.Controls.Add(this.radioVeterano);
             this.grpboxCategoria.Controls.Add(this.rdobtnCalouro);
             this.grpboxCategoria.Location = new System.Drawing.Point(12, 71);
             this.grpboxCategoria.Name = "grpboxCategoria";
@@ -137,15 +137,15 @@
             this.grpboxCategoria.TabStop = false;
             this.grpboxCategoria.Text = "Categoria";
             // 
-            // radioButton1
+            // radioVeterano
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(111, 18);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(68, 17);
-            this.radioButton1.TabIndex = 1;
-            this.radioButton1.Text = "&Veterano";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioVeterano.AutoSize = true;
+            this.radioVeterano.Location = new System.Drawing.Point(111, 18);
+            this.radioVeterano.Name = "radioVeterano";
+            this.radioVeterano.Size = new System.Drawing.Size(68, 17);
+            this.radioVeterano.TabIndex = 1;
+            this.radioVeterano.Text = "&Veterano";
+            this.radioVeterano.UseVisualStyleBackColor = true;
             // 
             // rdobtnCalouro
             // 
@@ -225,7 +225,7 @@
         private System.Windows.Forms.RadioButton rdobtnVespertino;
         private System.Windows.Forms.RadioButton rdobtnMatutino;
         private System.Windows.Forms.GroupBox grpboxCategoria;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton radioVeterano;
         private System.Windows.Forms.RadioButton rdobtnCalouro;
         private System.Windows.Forms.Button btnCalcular;
         private System.Windows.Forms.TextBox txtStatus;
