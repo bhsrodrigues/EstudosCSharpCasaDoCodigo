@@ -76,12 +76,13 @@ namespace CalculaSalario
                     break;
             
             }
-            updateSalary(getCoefficient(rdoShift, hours));
+            updateSalary(getCoefficient(rdoShift, minimumPayment));
         }
 
         public void updateSalary(double coefficient)
         {
-            lstboxResult.Items.Add("Valor do coeficiente......" + coefficient.ToString());
+            lstboxResult.Items.Add(String.Format("{0,-36}{1:C}",
+                                    "Valor do coeficiente",coefficient));
         }
 
         private double getCoefficient(RadioButton rdoShift, double minumunPayment)
