@@ -35,6 +35,11 @@ namespace CalculaSalario
             updateStatus(0);
         }
 
+        public getTax()
+        {
+
+        }
+
         public double getFoodTickets(RadioButton rdoCategory, double minimunPayment, double payment)
         {
             //double foodTicket = 0;
@@ -81,8 +86,12 @@ namespace CalculaSalario
 
         public void updateSalary(double coefficient)
         {
-            lstboxResult.Items.Add(String.Format("{0,-36}{1:C}",
+            lstboxResult.Items.Add(String.Format("{0,-68}{1:C}",
                                     "Valor do coeficiente",coefficient));
+            lstboxResult.Items.Add(String.Format("{0,-69}{1:C}",
+                                    "Salário bruto", coefficient * Convert.ToInt16(txtHoras.Text)));
+            lstboxResult.Items.Add(String.Format"{0,-68}{1:C}",
+                                    "Valor do imposto",)
         }
 
         private double getCoefficient(RadioButton rdoShift, double minumunPayment)
