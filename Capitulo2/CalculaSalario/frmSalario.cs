@@ -17,6 +17,8 @@ namespace CalculaSalario
             InitializeComponent();
         }
 
+        private int position = 0;
+
         private void btnCalcular_Click(object sender, EventArgs e)
         {
 
@@ -121,14 +123,26 @@ namespace CalculaSalario
         public void updateSalary(double coefficient, RadioButton rdoCategory, RadioButton rdoShift)
         {
             double salary = coefficient * Convert.ToInt16(txtHoras.Text);
+            addWorkerInformation("Valor do coeficiente", coefficient);
             lstboxResult.Items.Add(String.Format("{0,-68}{1:C}",
                                     "Valor do coeficiente",coefficient));
+            MessageBox.Show(lstboxResult.Items[0].ToString().Length.ToString());
+            addWorkerInformation("Salário Bruto", salary);
             lstboxResult.Items.Add(String.Format("{0,-69}{1:C}",
                                     "Salário bruto", salary));
+            MessageBox.Show(lstboxResult.Items[3].ToString().Length.ToString());
             lstboxResult.Items.Add(String.Format("{0,-68}{1:C}",
                                     "Valor do imposto", getTax(rdoCategory,salary)));
+            
             lstboxResult.Items.Add(String.Format("{0, -68}{1:C}",
                                     "Valor da gratificação", getGratification(rdoShift, Convert.ToInt32(txtHoras.Text))));
+        }
+
+        public void addWorkerInformation(string label, double value)
+        {
+            position = (284 / 3  - (label.Length - value.ToString().Length)) * -1;
+            Console.WriteLine(lstboxResult.Size.Width.ToString());
+            lstboxResult.Items.Add(String.Format("{0," + position.ToString() + "}{1:C}", label, value));
         }
 
         private double getCoefficient(RadioButton rdoShift, double minumunPayment)
