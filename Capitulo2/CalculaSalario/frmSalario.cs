@@ -35,9 +35,43 @@ namespace CalculaSalario
             updateStatus(0);
         }
 
-        public getTax()
+        private double calculateTax(double payment, double percentual)
         {
+            return payment * percentual;
+        }
 
+        public double getTax(RadioButton rdoCategory, double payment)
+        {
+            double tax = 0;
+
+            switch (rdoCategory.Text.Replace("&",""))
+            {
+                case "Calouro":
+                    if (payment < 300)
+                    {
+                        tax = calculateTax(payment, 0.01);
+                        break;
+                    }
+                    else
+                    {
+                        tax = calculateTax(payment, 0.02);
+                        break;
+                    }
+                case "Veterano":
+                    if (payment < 300)
+                    {
+                        tax = calculateTax(payment, 0.03);
+                        break;
+                    }
+                    else
+                    {
+                        tax = calculateTax(payment, 0.04);
+                        break;
+                    }
+                
+            }
+            return tax;
+            
         }
 
         public double getFoodTickets(RadioButton rdoCategory, double minimunPayment, double payment)
@@ -81,17 +115,20 @@ namespace CalculaSalario
                     break;
             
             }
-            updateSalary(getCoefficient(rdoShift, minimumPayment));
+            updateSalary(getCoefficient(rdoShift, minimumPayment), rdoCategory, rdoShift);
         }
 
-        public void updateSalary(double coefficient)
+        public void updateSalary(double coefficient, RadioButton rdoCategory, RadioButton rdoShift)
         {
+            double salary = coefficient * Convert.ToInt16(txtHoras.Text);
             lstboxResult.Items.Add(String.Format("{0,-68}{1:C}",
                                     "Valor do coeficiente",coefficient));
             lstboxResult.Items.Add(String.Format("{0,-69}{1:C}",
-                                    "Salário bruto", coefficient * Convert.ToInt16(txtHoras.Text)));
-            lstboxResult.Items.Add(String.Format"{0,-68}{1:C}",
-                                    "Valor do imposto",)
+                                    "Salário bruto", salary));
+            lstboxResult.Items.Add(String.Format("{0,-68}{1:C}",
+                                    "Valor do imposto", getTax(rdoCategory,salary)));
+            lstboxResult.Items.Add(String.Format("{0, -68}{1:C}",
+                                    "Valor da gratificação", getGratification(rdoShift, Convert.ToInt32(txtHoras.Text))));
         }
 
         private double getCoefficient(RadioButton rdoShift, double minumunPayment)
