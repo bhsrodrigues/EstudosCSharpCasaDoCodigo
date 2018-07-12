@@ -42,10 +42,11 @@
             this.rdobtnCalouro = new System.Windows.Forms.RadioButton();
             this.btnCalcular = new System.Windows.Forms.Button();
             this.txtStatus = new System.Windows.Forms.TextBox();
-            this.lstboxResult = new System.Windows.Forms.ListBox();
             this.toolTipSalario = new System.Windows.Forms.ToolTip(this.components);
+            this.dtgdResult = new System.Windows.Forms.DataGridView();
             this.grpboxTurno.SuspendLayout();
             this.grpboxCategoria.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgdResult)).BeginInit();
             this.SuspendLayout();
             // 
             // lblSalario
@@ -159,7 +160,7 @@
             // 
             // btnCalcular
             // 
-            this.btnCalcular.Location = new System.Drawing.Point(213, 232);
+            this.btnCalcular.Location = new System.Drawing.Point(213, 242);
             this.btnCalcular.Name = "btnCalcular";
             this.btnCalcular.Size = new System.Drawing.Size(84, 23);
             this.btnCalcular.TabIndex = 7;
@@ -169,19 +170,11 @@
             // 
             // txtStatus
             // 
-            this.txtStatus.Location = new System.Drawing.Point(14, 232);
+            this.txtStatus.Location = new System.Drawing.Point(12, 244);
             this.txtStatus.Name = "txtStatus";
             this.txtStatus.ReadOnly = true;
-            this.txtStatus.Size = new System.Drawing.Size(187, 20);
+            this.txtStatus.Size = new System.Drawing.Size(189, 20);
             this.txtStatus.TabIndex = 8;
-            // 
-            // lstboxResult
-            // 
-            this.lstboxResult.FormattingEnabled = true;
-            this.lstboxResult.Location = new System.Drawing.Point(14, 124);
-            this.lstboxResult.Name = "lstboxResult";
-            this.lstboxResult.Size = new System.Drawing.Size(284, 95);
-            this.lstboxResult.TabIndex = 9;
             // 
             // toolTipSalario
             // 
@@ -189,12 +182,24 @@
             this.toolTipSalario.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.toolTipSalario.ToolTipTitle = "Ajuda";
             // 
+            // dtgdResult
+            // 
+            this.dtgdResult.AllowUserToAddRows = false;
+            this.dtgdResult.AllowUserToDeleteRows = false;
+            this.dtgdResult.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgdResult.Location = new System.Drawing.Point(12, 124);
+            this.dtgdResult.Name = "dtgdResult";
+            this.dtgdResult.ReadOnly = true;
+            this.dtgdResult.Size = new System.Drawing.Size(285, 102);
+            this.dtgdResult.TabIndex = 10;
+            this.dtgdResult.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            // 
             // frmSalario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(306, 264);
-            this.Controls.Add(this.lstboxResult);
+            this.ClientSize = new System.Drawing.Size(306, 276);
+            this.Controls.Add(this.dtgdResult);
             this.Controls.Add(this.txtStatus);
             this.Controls.Add(this.btnCalcular);
             this.Controls.Add(this.grpboxCategoria);
@@ -209,6 +214,7 @@
             this.grpboxTurno.PerformLayout();
             this.grpboxCategoria.ResumeLayout(false);
             this.grpboxCategoria.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgdResult)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -229,8 +235,8 @@
         private System.Windows.Forms.RadioButton rdobtnCalouro;
         private System.Windows.Forms.Button btnCalcular;
         private System.Windows.Forms.TextBox txtStatus;
-        private System.Windows.Forms.ListBox lstboxResult;
         private System.Windows.Forms.ToolTip toolTipSalario;
+        private System.Windows.Forms.DataGridView dtgdResult;
     }
 }
 

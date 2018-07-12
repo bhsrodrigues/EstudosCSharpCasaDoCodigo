@@ -17,10 +17,12 @@ namespace CalculaSalario
             InitializeComponent();
         }
 
-        private int position = 0;
+        private int position;
 
         private void btnCalcular_Click(object sender, EventArgs e)
         {
+
+            position = 0;
 
             RadioButton selectedRadioButtonCategoria = getSelectedRadioButton(grpboxCategoria);
             RadioButton selectedRadioButtonTurno = getSelectedRadioButton(grpboxTurno);
@@ -33,8 +35,42 @@ namespace CalculaSalario
                 return;
             }
 
-            getPayment(selectedRadioButtonCategoria, selectedRadioButtonTurno, 700, 100);
-            updateStatus(0);
+
+            dataGridConfig();
+
+            getPayment(selectedRadioButtonCategoria, selectedRadioButtonTurno, 
+                        Convert.ToInt16(txtSalarioMinimo.Text), Convert.ToInt16(txtHoras.Text));
+
+            foreach (DataGridViewRow row in dtgdResult.Rows){
+                row.Height = ((int)(row.Height * 0.8));
+            }
+
+        }
+
+        private void dataGridConfig()
+        {
+            
+            while (dtgdResult.Rows.Count != 0)
+            {
+                dtgdResult.Rows.Remove(dtgdResult.Rows[0]);
+            }
+
+
+            dtgdResult.ColumnHeadersVisible = false;
+            if (dtgdResult.Columns.Count != 2)
+            {
+                dtgdResult.Columns.Add("Desc", "");
+                dtgdResult.Columns.Add("Valor", "");
+            }
+            dtgdResult.Columns[0].Width = ((int)(dtgdResult.Width * 0.75));
+            dtgdResult.ReadOnly = true;
+            dtgdResult.Columns[1].Width = ((int)(dtgdResult.Width * 0.25));
+            dtgdResult.RowHeadersVisible = false;
+            dtgdResult.BorderStyle = BorderStyle.None;
+            dtgdResult.AllowUserToResizeRows = false;
+            dtgdResult.AllowUserToResizeColumns = false;
+            dtgdResult.CellBorderStyle = DataGridViewCellBorderStyle.None;
+            dtgdResult.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
         }
 
         private double calculateTax(double payment, double percentual)
@@ -123,26 +159,27 @@ namespace CalculaSalario
         public void updateSalary(double coefficient, RadioButton rdoCategory, RadioButton rdoShift)
         {
             double salary = coefficient * Convert.ToInt16(txtHoras.Text);
-            addWorkerInformation("Valor do coeficiente", coefficient);
-            lstboxResult.Items.Add(String.Format("{0,-68}{1:C}",
-                                    "Valor do coeficiente",coefficient));
-            MessageBox.Show(lstboxResult.Items[0].ToString().Length.ToString());
-            addWorkerInformation("Salário Bruto", salary);
-            lstboxResult.Items.Add(String.Format("{0,-69}{1:C}",
-                                    "Salário bruto", salary));
-            MessageBox.Show(lstboxResult.Items[3].ToString().Length.ToString());
-            lstboxResult.Items.Add(String.Format("{0,-68}{1:C}",
-                                    "Valor do imposto", getTax(rdoCategory,salary)));
-            
-            lstboxResult.Items.Add(String.Format("{0, -68}{1:C}",
-                                    "Valor da gratificação", getGratification(rdoShift, Convert.ToInt32(txtHoras.Text))));
+            double finalSalary = salary + getGratification(rdoShift, Convert.ToInt32(txtHoras.Text)) +
+                getFoodTickets(rdoCategory, Convert.ToDouble(txtSalarioMinimo.Text), salary) - getTax(rdoCategory, salary);
+            addWorkerInformation("Valor do coeficiente:", coefficient);
+            addWorkerInformation("Salário Bruto:", salary);
+            addWorkerInformation("Valor do imposto:", getTax(rdoCategory, salary));
+            addWorkerInformation("Valor da gratificação:", getGratification(rdoShift, Convert.ToInt32(txtHoras.Text)));
+            addWorkerInformation("Valor do auxílio alimentação:", getFoodTickets(rdoCategory,
+                                Convert.ToDouble(txtSalarioMinimo.Text),salary));
+            addWorkerInformation("Salário líquido", finalSalary);
+            dtgdResult.Rows[0].Selected = true;
+
+            updateStatus(finalSalary);
         }
 
         public void addWorkerInformation(string label, double value)
         {
-            position = (284 / 3  - (label.Length - value.ToString().Length)) * -1;
-            Console.WriteLine(lstboxResult.Size.Width.ToString());
-            lstboxResult.Items.Add(String.Format("{0," + position.ToString() + "}{1:C}", label, value));
+            //position = (284 / 3  - (label.Length - value.ToString().Length)) * -1;
+            dtgdResult.Rows.Add();
+            dtgdResult.Rows[position].Cells[0].Value = label;
+            dtgdResult.Rows[position].Cells[1].Value = String.Format("{0:C}", value);
+            position++;
         }
 
         private double getCoefficient(RadioButton rdoShift, double minumunPayment)
@@ -191,10 +228,10 @@ namespace CalculaSalario
 
         public void updateStatus(double payment)
         {
-            if (payment < 350)
+            if (payment < 954)
             {
                 txtStatus.Text = "Mal remunerado";
-            }else if (payment < 600)
+            }else if (payment < 954 * 1.75)
             {
                 txtStatus.Text = "Normal";
             }else
@@ -206,6 +243,12 @@ namespace CalculaSalario
             txtStatus.BackColor = Color.Yellow;
             txtStatus.ForeColor = Color.Blue;
             txtStatus.TextAlign = HorizontalAlignment.Center;
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            dtgdResult.Rows[e.RowIndex].Selected = true;
         }
     }
 }
