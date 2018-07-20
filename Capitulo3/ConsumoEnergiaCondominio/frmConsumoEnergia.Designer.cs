@@ -1,6 +1,6 @@
 ﻿namespace ConsumoEnergiaCondominio
 {
-    partial class Form1
+    partial class FormConsumption
     {
         /// <summary>
         /// Required designer variable.
@@ -34,9 +34,6 @@
             this.txtConsumption = new System.Windows.Forms.TextBox();
             this.btnRegister = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.columnHouse = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnConsumption = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnDiscount = new System.Windows.Forms.DataGridViewButtonColumn();
             this.btnProcess = new System.Windows.Forms.Button();
             this.lblTotal = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -82,42 +79,18 @@
             this.btnRegister.TabIndex = 4;
             this.btnRegister.Text = "Registrar";
             this.btnRegister.UseVisualStyleBackColor = true;
+            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.columnHouse,
-            this.columnConsumption,
-            this.columnDiscount});
             this.dataGridView1.Location = new System.Drawing.Point(13, 42);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(325, 185);
             this.dataGridView1.TabIndex = 5;
-            // 
-            // columnHouse
-            // 
-            this.columnHouse.HeaderText = "Casa";
-            this.columnHouse.Name = "columnHouse";
-            this.columnHouse.ReadOnly = true;
-            this.columnHouse.Width = 94;
-            // 
-            // columnConsumption
-            // 
-            this.columnConsumption.HeaderText = "Consumo";
-            this.columnConsumption.Name = "columnConsumption";
-            this.columnConsumption.ReadOnly = true;
-            this.columnConsumption.Width = 94;
-            // 
-            // columnDiscount
-            // 
-            this.columnDiscount.HeaderText = "Desconto";
-            this.columnDiscount.Name = "columnDiscount";
-            this.columnDiscount.ReadOnly = true;
-            this.columnDiscount.Width = 94;
             // 
             // btnProcess
             // 
@@ -137,7 +110,7 @@
             this.lblTotal.TabIndex = 7;
             this.lblTotal.Text = "Total de consumo sem desconto:";
             // 
-            // Form1
+            // FormConsumption
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -150,7 +123,7 @@
             this.Controls.Add(this.lblConsumo);
             this.Controls.Add(this.txtHouseNumber);
             this.Controls.Add(this.lblHouseNumber);
-            this.Name = "Form1";
+            this.Name = "FormConsumption";
             this.Text = "Consumo de Energia de um Condomínio";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
@@ -166,9 +139,6 @@
         private System.Windows.Forms.TextBox txtConsumption;
         private System.Windows.Forms.Button btnRegister;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnHouse;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnConsumption;
-        private System.Windows.Forms.DataGridViewButtonColumn columnDiscount;
         private System.Windows.Forms.Button btnProcess;
         private System.Windows.Forms.Label lblTotal;
     }
