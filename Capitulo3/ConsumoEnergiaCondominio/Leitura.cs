@@ -9,8 +9,8 @@ namespace ConsumoEnergiaCondominio
     class Leitura
     {
         
-        public string Casa { protected set; get; }
-        public double Consumo { protected set; get; }
+        public string Casa { get; set; }
+        public double Consumo { set; get; }
         public double Desconto
         {
             get

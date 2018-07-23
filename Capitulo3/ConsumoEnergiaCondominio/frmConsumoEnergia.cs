@@ -36,7 +36,7 @@ namespace ConsumoEnergiaCondominio
                 MessageBox.Show("Casa já foi cadastada");
             else
                 this.leituras.Add(leitura);
-                clearForm();
+            clearForm();
         }
 
         private void clearForm()
@@ -46,7 +46,25 @@ namespace ConsumoEnergiaCondominio
             txtHouseNumber.Focus();
         }
 
+        private void btnProcess_Click_1(object sender, EventArgs e)
+        {
+            updateTable(dataGridView1);
+        }
 
+        private void updateTable(DataGridView dgv)
+        {
+            leituraSource.Add(new Leitura("Total", "0"));
 
+            double totalDescount = 0, totalConsumption = 0;
+
+            foreach (Leitura l in leituras)
+            {
+                totalDescount += l.Desconto;
+                totalConsumption += l.Consumo;
+            }
+
+            dgv.Rows[dgv.Rows.Count - 1].Cells[0].Value = "Other";
+            
+        }
     }
 }

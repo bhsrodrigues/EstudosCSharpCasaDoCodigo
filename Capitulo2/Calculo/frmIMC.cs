@@ -58,5 +58,10 @@ namespace Calculo
         {
             calculateIMC();
         }
+
+        private void frmIMC_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

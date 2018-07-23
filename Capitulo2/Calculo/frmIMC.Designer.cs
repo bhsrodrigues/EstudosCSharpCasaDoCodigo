@@ -111,6 +111,7 @@
             this.Controls.Add(this.grpboxGender);
             this.Name = "frmIMC";
             this.Text = "Cálculo peso ideal";
+            this.Load += new System.EventHandler(this.frmIMC_Load);
             this.grpboxGender.ResumeLayout(false);
             this.grpboxGender.PerformLayout();
             this.ResumeLayout(false);
